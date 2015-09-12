@@ -1,17 +1,26 @@
+from scipy import ndimage
 import numpy as np
-from scipy import ndimage, misc
 import os
+import csv
 
-data_folder = "/Users/jonkalfayan/Documents/GitRepos/Other/trainResized/"
+kaggleFolder = "/Users/jonkalfayan/Documents/GitRepos/Kaggle/"
+train_data = kaggleFolder + "trainResized/"
+train_labels = kaggleFolder + "trainLabels.csv"
 
-feature_mat = []
+x_train = []
+y_train = []
 
-for filename in os.listdir(data_folder):
-	img = data_folder + filename
+for filename in os.listdir(train_data):
+	img = train_data + filename
 	img_arr = ndimage.imread(img, True)
-	feature_mat.append(img_arr.ravel())
+	x_train.append(img_arr.ravel())
 
+x_train = np.matrix(x_train)
 
-feature_mat = np.matrix(feature_mat)
+with open(train_labels, 'rb') as f:
+    reader = csv.reader(f)
+    y_train = list(reader)
+
+print y_train[2]
 
 
