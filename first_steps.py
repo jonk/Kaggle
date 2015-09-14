@@ -21,6 +21,12 @@ with open(train_labels, 'rb') as f:
     reader = csv.reader(f)
     y_train = list(reader)
 
-print y_train[2]
+
+def squaredDist(p1, p2):
+	return np.dot(np.subtract(p1, p2), np.subtract(p1, p2).T)
+
+print squaredDist(x_train[1], x_train[2])
+
+
 
 
