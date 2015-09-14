@@ -22,6 +22,24 @@ with open(train_labels, 'rb') as f:
     y_train = list(reader)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def squaredDist(p1, p2):
 	return np.dot(np.subtract(p1, p2), np.subtract(p1, p2).T)
 
