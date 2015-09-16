@@ -1,4 +1,5 @@
 trainResized/*
+testResized/*
 trainLabels.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
