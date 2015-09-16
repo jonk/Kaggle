@@ -30,6 +30,7 @@ with open(train_labels, 'rb') as f:
     reader = csv.reader(f)
     y_train = list(reader)
 
+
 predictions = []
 k = 1
 
@@ -38,6 +39,29 @@ print x_test[1:2]
 def kNN():
     pass
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def squaredDist(p1, p2):
+	return np.dot(np.subtract(p1, p2), np.subtract(p1, p2).T)
+
+print squaredDist(x_train[1], x_train[2])
 
 
 
