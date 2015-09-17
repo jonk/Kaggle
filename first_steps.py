@@ -3,7 +3,7 @@ import numpy as np
 import os
 import csv
 
-kaggleFolder = "/Users/Jonk/Documents/Developer/GitRepos/Kaggle/"
+kaggleFolder = "/Users/jonkalfayan/Documents/GitRepos/Kaggle/"
 train_data = kaggleFolder + "trainResized/"
 train_labels = kaggleFolder + "trainLabels.csv"
 test_data = kaggleFolder + "testResized/"
@@ -57,10 +57,11 @@ def findNearestNeighborsLabel(img, k):
 	neighbors = []
 	for j in range(k):
 		leastDist = neighborDists.index(min(neighborDists))
-		neighbors.append(y_train[leastDist])
-		neighborDists.remove(min(neighborsDists))
+		neighbors.append(y_train[leastDist][1])
+		neighborDists.remove(min(neighborDists))
 	return findMaxLabel(neighbors)
 
+print findNearestNeighborsLabel(x_test[0], k)
 
 
 
