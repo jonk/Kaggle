@@ -1,4 +1,5 @@
 trainResized/*
+predictions.csv
 testResized/*
 trainLabels.csv
 # Byte-compiled / optimized / DLL files

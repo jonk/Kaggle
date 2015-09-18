@@ -3,7 +3,8 @@ import numpy as np
 import os
 import csv
 
-kaggleFolder = "/Users/jonkalfayan/Documents/GitRepos/Kaggle/"
+
+kaggleFolder = "/Users/Jonk/Documents/Developer/GitRepos/Kaggle/"
 train_data = kaggleFolder + "trainResized/"
 train_labels = kaggleFolder + "trainLabels.csv"
 test_data = kaggleFolder + "testResized/"
@@ -31,14 +32,18 @@ with open(train_labels, 'rb') as f:
     y_train = list(reader)
 y_train.pop(0)
 
+k = 7
+
 predictions = []
-k = 1
 
 def kNN():
-    pass
+    global predictions
+    for i, x in enumerate(x_test):
+        predictions.append(findNearestNeighborsLabel(x, k))
+        print i
 
 def squaredDist(p1, p2):
-	return np.dot(np.subtract(p1, p2), np.subtract(p1, p2).T)
+	return np.linalg.norm(p1 - p2)
 
 def findMaxLabel(neighbors):
 	helper_dict = dict()
@@ -61,8 +66,14 @@ def findNearestNeighborsLabel(img, k):
 		neighborDists.remove(min(neighborDists))
 	return findMaxLabel(neighbors)
 
-print findNearestNeighborsLabel(x_test[0], k)
+kNN()
 
-
+with open('predictions.csv', 'w') as csvfile:
+    prediction_writer = csv.writer(csvfile)
+    prediction_writer.writerow(["ID", "Class"])
+    num = 6284
+    for i in predictions:
+        prediction_writer.writerow([str(num), str(i)])
+        num += 1
 
 
